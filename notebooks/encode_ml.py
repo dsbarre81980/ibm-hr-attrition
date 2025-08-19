@@ -1,6 +1,6 @@
-# encode_ml.py
 import pandas as pd
 
+# Convierte variables categóricas a numéricas para machine learning
 def to_ml_dataset(df: pd.DataFrame) -> pd.DataFrame:
     df_ml = df.copy()
 

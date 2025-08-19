@@ -1,4 +1,3 @@
-# run_pipeline.py
 from pathlib import Path
 import pandas as pd
 
@@ -9,12 +8,13 @@ from encode_ml import to_ml_dataset
 from viz import hist, bar_counts, stacked_attrition_by
 
 # === Config rutas ===
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_RAW = BASE_DIR / "data" / "raw" / "WA_Fn-UseC_-HR-Employee-Attrition.csv"
 DATA_PROCESSED_DIR = BASE_DIR / "data" / "processed"
 ANALYTICS_OUT = DATA_PROCESSED_DIR / "hr_clean_analytics.csv"
 ML_OUT = DATA_PROCESSED_DIR / "hr_clean_ml.csv"
 
+# Ejecuta todo el pipeline de limpieza y preparación de datos
 def main():
     # 1) Carga
     df = load_csv(DATA_RAW)
@@ -49,7 +49,7 @@ def main():
     df_ml = to_ml_dataset(dfa)
     save_csv(df_ml, ML_OUT)
 
-    # 8) Evidencias gráficas simples (opcionales)
+    # 8) Evidencias gráficas simples
     try:
         hist(dfa["Age"], "Distribución de Edad", "Edad")
         bar_counts(dfa["Attrition"].astype(str), "Distribución de Attrition (Yes/No)", "Attrition")

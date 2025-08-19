@@ -1,6 +1,6 @@
-# features.py
 import pandas as pd
 
+# Crea grupos de edad categóricos
 def add_age_group(df: pd.DataFrame) -> pd.DataFrame:
     dfx = df.copy()
     bins_age = [18, 25, 35, 45, 55, 70]
@@ -10,6 +10,7 @@ def add_age_group(df: pd.DataFrame) -> pd.DataFrame:
     )
     return dfx
 
+# Crea grupos de antigüedad en la empresa
 def add_tenure_group(df: pd.DataFrame) -> pd.DataFrame:
     dfx = df.copy()
     bins_tenure = [-1, 2, 5, 10, 20, 50]
@@ -19,6 +20,7 @@ def add_tenure_group(df: pd.DataFrame) -> pd.DataFrame:
     )
     return dfx
 
+# Divide los ingresos en cuartiles
 def add_income_quartile(df: pd.DataFrame) -> pd.DataFrame:
     dfx = df.copy()
     dfx["IncomeQuartile"] = pd.qcut(
@@ -26,6 +28,7 @@ def add_income_quartile(df: pd.DataFrame) -> pd.DataFrame:
     )
     return dfx
 
+# Aplica todas las transformaciones de features
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
     df1 = add_age_group(df)
     df2 = add_tenure_group(df1)
