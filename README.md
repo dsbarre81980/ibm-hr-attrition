@@ -1,1 +1,3 @@
-# ibm-hr-attrition
+﻿# IBM HR Analytics – Attrition
+
+Proyecto mínimo...
